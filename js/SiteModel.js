@@ -61,7 +61,16 @@
 			//获取
 			InitGetCode();
 		};
+		function changeURLArg(url,arg,arg_val){
+		    var pattern=arg+'=([^&]*)';
+		    var replaceText=arg+'='+arg_val;
+		    newurl=url.split("?")[0];
+			history.pushState(null,null,newurl+'?'+replaceText);  
+		}
 		function InitGetCode(){
+			//http://t.nfsq.com.cn/h5/index.html?traceCode=00000000E124B6
+			//http://t.nfsq.com.cn/h5/index.html?boxCode=00000000E124B6
+			changeURLArg(window.location.href,"traceCode","1")
 			_Self.CodeError=false;
 			if(window.location.href.indexOf('?traceCode=')>0){
                 var _code=window.location.href.split('?traceCode=')[1];
