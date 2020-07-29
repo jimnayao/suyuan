@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <!-- 
+        maksim.lin@foxmail.com 
+    -->
+    <!-- 可以使用zepto也可以使用jquery -->
+    <script src="./js/lib/zepto.min.js"></script>
+    <!-- 一些基础库 事件类  扩展处理类 log测试工具 -->
+    <script src="./js/lib/MBase.js"></script>
+    <title> 维纳斯</title>
+    <!-- 插入css -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <!-- layer.js支持使用的css -->
+    <link rel="stylesheet" href="css/need/layer.css">
+    <!-- 
+        手机网站viewport
+        这个网站项目自动适应是对div#screen transform scale来实现自适应
+    -->
+    <script type="text/javascript">
+        var ua = navigator.userAgent;if (/Android (\d+\.\d+)/.test(ua)) {document.write('<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=noo">');} else {document.write('<meta name="viewport" content="width=640,target-densitydpi=device-dpi,maximum-scale=1.0, user-scalable=no">');}
+    </script>
+</head>
+<body>
+	<audio preload="metadata" loop="loop" id="music">
+		<source src="images/music.ogg" type="audio/ogg">
+		<source src="images/music.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<!--<script>
+		function audioAutoPlay(id){
+		    var audio = document.getElementById(id),
+		        play = function(){
+		        audio.play();
+		        document.removeEventListener("touchstart",play, false);
+		    };
+		    audio.play();
+		    document.addEventListener("WeixinJSBridgeReady", function () {
+		        play();
+		    }, false);
+		    document.addEventListener("touchstart",play, false);
+		}
+		audioAutoPlay('music');
+	</script>-->
+    <!-- 整个网站主容器建议从这里开始 -->
+    <div id="screen">
+        <div id='mainBg'></div>
+        <div id='contentBox'>
+            <div class="scrollBox">
+            </div>
+        </div>
+        
+        <div id="qrPanel" style="display: none;">
+            <div class="panel">
+            	<img src="assets/images/packet/code2.png"/>
+            </div>
+        </div>
+        <div id="menu">
+            <div class="menuBtn"><div class="ico ico0 select"></div></div>
+            <div class="menuBtn"><div class="ico ico1"></div></div>
+            <div class="menuBtn"><div class="ico ico2"></div></div>
+        </div>
+        
+        <div class="dialog">
+        	<div class="dialog_bg">
+        		<div class="dialog_close"></div>
+        	</div>
+        	<!--维纳斯-->
+        	<div class="dialog_main" id="vinu1">
+        		<div class="dialog_t vinus1">
+        		</div>
+        		<div class="dialog_b">
+        			<p>来自朗格多克的三个Cru列级产区Terrasse duMoulinas,Pezenas和Gres de Montpe lier;主要为粘土和富含矿物的石灰石为主；西拉的葡萄树龄为25-35年，歌海娜的葡萄树龄为30年，慕合怀特的葡萄树龄为18年；产量不高但品质优秀。
+					</p>
+        		</div>
+        	</div>
+        	<div class="dialog_main" id="vinu2">
+        		<div class="dialog_t vinus2">
+        		</div>
+        		<div class="dialog_b">
+        			<p>维纳斯系列的葡萄精选于朗格多克地区最优质的葡萄园。
+        				<br />
+        				这里的葡萄园并不追求多产，而是致力于生产出能够充分体现当地风土，拥有馥郁的香气以及美妙色泽的优质葡萄。
+        			</p>
+        		</div>
+        	</div>
+        	<div class="dialog_main" id="vinu3">
+        		<div class="dialog_t vinus3">
+        		</div>
+        		<div class="dialog_b">
+        			<p>维纳斯的庄园和珍藏系列的葡萄酒，都经过橡木桶的陈酿。
+        				<br />
+        				橡木桶赋予了它们更多复杂而优雅的个性。
+        			</p>
+        		</div>
+        	</div>
+        	<div class="dialog_main" id="vinu4">
+        		<div class="dialog_t vinus4">
+        		</div>
+        		<div class="dialog_b">
+        			<p>1954年，金•克劳德•玛斯的祖父雷蒙•玛斯，将拥有一千多年历史的科纳斯城堡收入家族名下，这里也成为了孕育苍鹭传奇的摇篮。</p>        				
+        		</div>
+        	</div>
+        </div>
+
+    </div>
+    <!-- 网站具体实现JS -->
+    <script src="./js/lib/sea.min.js"></script>
+    <script type="text/javascript">
+        seajs.config({
+            base: "./",
+            debug: false,
+            alias: {},
+            preload: []
+        });
+        //加载入口模块
+        seajs.use(['./js/SiteModel.js'], function () {
+            // document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+            window.siteModel = seajs.require('SiteModel');
+        });
+    </script>
+</body>
+</html>
